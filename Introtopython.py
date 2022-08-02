@@ -818,3 +818,32 @@ import datetime
 my_date = datetime.date(2016, 7, 11)
 
 print(Employee.is_workday(my_date))
+
+####################################################################################
+# CLASS VARIABLE
+
+class Dog:
+    dogs = [] # class variable : normally used when we want to have variables
+    # every class in our object is going to use
+
+    def __init__(self, name1, name2):
+        self.name = name1
+        self.last = name2
+
+# with class variables, we can just call them with the class name as well as
+# instance name.
+
+####################################################################################
+
+# Importing from different files in the same dir (Import modules)
+# from my_module import *
+# from my_module import find_index
+# import my module
+
+print(sys.path)
+
+# Adding a path where a module is saved to our current system path in order to
+# import from there
+
+import sys
+sys.path.append('/user/files/ python/project')
