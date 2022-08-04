@@ -1,4 +1,6 @@
 # Trailing comma
+import random
+
 import matplotlib
 
 print('red', 'car')
@@ -480,7 +482,6 @@ while 1:
         break
     print(x)
     x += 1
-
 # ==================================================================================
 
 print(range(10, 15))
@@ -847,3 +848,196 @@ print(sys.path)
 
 import sys
 sys.path.append('/user/files/ python/project')
+
+# Standard library explore
+import  random
+courses_new = ['maths', 'data science', 'management', 'business']
+random.choice(courses_new)
+
+# MATHS FUNCTIONS
+import math
+fac = math.factorial(10)
+print(fac)
+
+# Dateime
+import datetime
+import calendar
+
+today = datetime.date.today()
+print(today)
+print(calendar.isleap(2019))
+
+# OS (checking wd and acccess to the underlying operating system)
+import os
+os.getcwd() # getting working directory
+
+####################################################################################
+# READING FILES WITH OPEN
+f = open('test.txt', 'r') # r-read, w-write, a-append, r+ -read and write to a file
+print(f.name) # name of the file
+print(f.mode)  # mode the file is open with
+f.close() # if we open a file, we need to explicitly close it.
+
+# Using with keyword which automatically closes the file after opening it
+
+with open('test.txt', 'r') as f:
+    f_contents = f.read()
+    print(f_contents)
+
+f_contents = f.readline()  #read line one after the other
+print(f_contents, end= '')
+
+# If we don't want to store the read file in our memory incase we have large data
+with open('test.txt', 'r') as f:
+    for line in f:
+        print(line, end='')
+
+#File Objects
+
+##The Basics:
+#f = open("test.txt", "r")
+#f = open("test.txt", "w")
+#f = open("test.txt", "a")
+#f = open("test.txt", "r+")
+#print(f.name)
+#print(f.mode)
+#f.close()
+
+##Reading Files:
+#with open("test.txt", "r") as f:
+	#pass
+
+	##Small Files:
+	#f_contents = f.read()
+	#print(f_contents)
+
+	##Big Files:
+	#f_contents = f.readlines()
+	#print(f_contents)
+
+    ###With the extra lines:
+	#f_contents = f.readline()
+	#print(f_contents)
+	#f_contents = f.readline()
+	#print(f_contents)
+
+	###Without the extra lines:
+	#f_contents = f.readline()
+	#print(f_contents, end = '')
+	#f_contents = f.readline()
+	#print(f_contents, end = '')
+
+	###Iterating through the file:
+	#for line in f:
+		#print(line, end = '')
+
+	###Going Back....:
+	#f_contents = f.read()
+	#print(f_contents, end = '')
+
+	###Printing by characters:
+	#f_contents = f.read(100)
+	#print(f_contents, end = '')
+	#f_contents = f.read(100)
+	#print(f_contents, end = '')
+	#f_contents = f.read(100)
+	#print(f_contents, end = '')
+
+	###Iterating through small chunks:
+	#size_to_read = 100
+	#f_contents = f.read(size_to_read)
+	#while len(f_contents) > 0:
+		#print(f_contents)
+		#f_contents = f.read(size_to_read)
+
+	###Iterating through small chunks, with 10 characters:
+	#size_to_read = 10
+	#f_contents = f.read(size_to_read)
+	#print(f_contents, end = '')
+	#f.seek(0)
+	#f_contents = f.read(size_to_read)
+	#print(f_contents, end = '')
+	#print(f.tell())
+	#while len(f_contents) > 0:
+		#print(f_contents, end = '*')
+		#f_contents = f.read(size_to_read)
+#print(f.mode)
+#print(f.closed)
+#print(f.read())
+
+
+##Writing Files:
+###The Error:
+#with open("test.txt", "r") as f:
+	#f.write("Test")
+
+###Writing Starts:
+#with open("test2.txt", "w") as f:
+	#pass
+	#f.write("Test")
+	#f.seek(0)
+	#f.write("Test")
+	#f.seek("R")
+
+##Copying Files:
+#with open("test.txt", "r") as rf:
+	#with open("test_copy.txt", "w") as wf:
+		#for line in rf:
+			#wf.write(line)
+
+#Copying the/your image:
+###The Error
+#with open("bronx.jpg", "r") as rf:
+	#with open("bronx_copy.jpg", "w") as wf:
+		#for line in rf:
+			#wf.write(line)
+
+###Copying the image starts, without chunks:
+#with open("bronx.jpg", "rb") as rf:
+	#with open("bronx_copy.jpg", "wb") as wf:
+		#for line in rf:
+			#wf.write(line)
+
+###Copying the image with chunks:
+#with open("bronx.jpg", "rb") as rf:
+	#with open("bronx_copy.jpg", "wb") as wf:
+		#chunk_size = 4096
+        #rf_chunk = rf.read(chunk_size)
+        #while len(rf_chunk) > 0:
+            #wf.write(rf_chunk)
+            #rf_chunk = rf.read(chunk_size)
+
+with open('Example2.txt', 'a+') as testwritefile:
+    print("Initial Location: {}".format(testwritefile.tell()))
+
+    data = testwritefile.read()
+    if (not data):  # empty strings return false in python
+        print('Read nothing')
+    else:
+        print(testwritefile.read())
+
+    testwritefile.seek(0, 0)  # move 0 bytes from beginning.
+
+    print("\nNew Location : {}".format(testwritefile.tell()))
+    data = testwritefile.read()
+    if (not data):
+        print('Read nothing')
+    else:
+        print(data)
+
+    print("Location after read: {}".format(testwritefile.tell()))
+
+    # .tell() - returns the current position in bytes
+    # .seek(offset,from) - changes  the position by 'offset'bytes with respect to
+    # 'from'.From can take the value \\ of 0, 1, 2 corresponding to beginning,
+    # relative to current position and end
+
+# Copy file to another
+
+with open('Example2.txt','r') as readfile:
+    with open('Example3.txt','w') as writefile:
+          for line in readfile:
+                writefile.write(line)
+
+####################################################################################
+##############  PANDAS ############################################################
